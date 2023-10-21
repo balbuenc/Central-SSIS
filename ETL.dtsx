@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="MSI"
   DTS:CreatorName="MSI\cbalb"
-  DTS:DTSID="{E16E7313-A2C7-4F08-9B22-6D84C8C9AF94}"
+  DTS:DTSID="{57573613-1422-4FDC-A26F-EA1AB9750284}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5209.0"
   DTS:LocaleID="3082"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{BEA50633-D9CA-4D14-BA9C-F7EC69991D01}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{302E6CA8-AA60-4AAC-AE6F-0F72C14C2325}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1761,85 +1761,29 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,42"
-          Id="Package\Dim ETL\SourceDimSex"
-          TopLeft="61,62" />
-        <NodeLayout
           Size="173,42"
           Id="Package\Dim ETL\DestinarionDimSex"
           TopLeft="50,221" />
-        <EdgeLayout
-          Id="Package\Dim ETL.Paths[OLE DB Source Output]"
-          TopLeft="136.75,104">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,117"
-              Start="0,0"
-              End="0,109.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,109.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Dim ETL\DestinationDimApplicants"
+          TopLeft="547,209" />
         <NodeLayout
           Size="187,42"
           Id="Package\Dim ETL\SourceDimCardTypes"
           TopLeft="267,62" />
         <NodeLayout
-          Size="208,42"
-          Id="Package\Dim ETL\DestinationDimCardTypes"
-          TopLeft="271,217" />
-        <EdgeLayout
-          Id="Package\Dim ETL.Paths[OLE DB Source Output1]"
-          TopLeft="360.5,104">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="14.5,113"
-              Start="0,0"
-              End="14.5,105.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,52.5"
-                    Point2="0,56.5"
-                    Point3="4,56.5" />
-                  <mssgle:LineSegment
-                    End="10.5,56.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.5,56.5"
-                    Point2="14.5,56.5"
-                    Point3="14.5,60.5" />
-                  <mssgle:LineSegment
-                    End="14.5,105.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
           Size="184,42"
           Id="Package\Dim ETL\SourceDimApplicants"
           TopLeft="543,54" />
         <NodeLayout
-          Size="205,42"
-          Id="Package\Dim ETL\DestinationDimApplicants"
-          TopLeft="547,209" />
+          Size="208,42"
+          Id="Package\Dim ETL\DestinationDimCardTypes"
+          TopLeft="271,217" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Dim ETL\SourceDimSex"
+          TopLeft="61,62" />
         <EdgeLayout
           Id="Package\Dim ETL.Paths[OLE DB Source Output2]"
           TopLeft="635,96">
@@ -1874,11 +1818,67 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Dim ETL.Paths[OLE DB Source Output1]"
+          TopLeft="360.5,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,113"
+              Start="0,0"
+              End="14.5,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.5"
+                    Point2="0,56.5"
+                    Point3="4,56.5" />
+                  <mssgle:LineSegment
+                    End="10.5,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,56.5"
+                    Point2="14.5,56.5"
+                    Point3="14.5,60.5" />
+                  <mssgle:LineSegment
+                    End="14.5,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Dim ETL.Paths[OLE DB Source Output]"
+          TopLeft="136.75,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,117"
+              Start="0,0"
+              End="0,109.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Dim ETL\SourceDimSex">
+    design-time-name="Package\Dim ETL\DestinarionDimSex">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1891,7 +1891,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Dim ETL\DestinarionDimSex">
+    design-time-name="Package\Dim ETL\DestinationDimApplicants">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1917,19 +1917,6 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Dim ETL\DestinationDimCardTypes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Dim ETL\SourceDimApplicants">
     <Properties>
       <Property>
@@ -1943,7 +1930,20 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Dim ETL\DestinationDimApplicants">
+    design-time-name="Package\Dim ETL\DestinationDimCardTypes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim ETL\SourceDimSex">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
