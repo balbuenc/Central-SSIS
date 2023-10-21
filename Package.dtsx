@@ -1,0 +1,1959 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/20/2023 11:10:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MSI"
+  DTS:CreatorName="MSI\cbalb"
+  DTS:DTSID="{E16E7313-A2C7-4F08-9B22-6D84C8C9AF94}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{BEA50633-D9CA-4D14-BA9C-F7EC69991D01}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[msi.CentralServer2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1C95B488-B30B-4CF4-A62D-7CD51B64C829}"
+      DTS:ObjectName="msi.CentralServer2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=msi;Initial Catalog=CentralServer2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{1C95B488-B30B-4CF4-A62D-7CD51B64C829}msi.CentralServer2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[msi.dwh]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6D8295C3-D4CB-45A8-BD00-05A4B972A82B}"
+      DTS:ObjectName="msi.dwh">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=msi;Initial Catalog=dwh;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{6D8295C3-D4CB-45A8-BD00-05A4B972A82B}msi.dwh;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dim ETL"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{13612EDA-6385-4AB0-812A-5B3DD9F059C0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim ETL"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Dim ETL\DestinarionDimSex"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DestinarionDimSex"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimSexes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim ETL\DestinarionDimSex.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[msi.dwh]"
+                  connectionManagerRefId="Package.ConnectionManagers[msi.dwh]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].Columns[SexKey]"
+                      cachedDataType="ui1"
+                      cachedName="SexKey"
+                      externalMetadataColumnId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].ExternalColumns[SexKey]"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[SexKey]" />
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].Columns[Value]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Value"
+                      externalMetadataColumnId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[Value]" />
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[Code]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].ExternalColumns[SexKey]"
+                      dataType="ui1"
+                      name="SexKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Value" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Code" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim ETL\DestinarionDimSex.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\DestinarionDimSex.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim ETL\DestinarionDimSex.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\DestinarionDimSex.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim ETL\DestinationDimApplicants"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DestinationDimApplicants"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimApplicants]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim ETL\DestinationDimApplicants.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[msi.dwh]"
+                  connectionManagerRefId="Package.ConnectionManagers[msi.dwh]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].Columns[ApplicantKey]"
+                      cachedDataType="i8"
+                      cachedName="ApplicantKey"
+                      externalMetadataColumnId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[ApplicantKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ApplicantKey]" />
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].Columns[FamilyName]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="FamilyName"
+                      externalMetadataColumnId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FamilyName]" />
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="BirthDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[DateOfBirth]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].Columns[SexKey]"
+                      cachedDataType="ui1"
+                      cachedName="SexKey"
+                      externalMetadataColumnId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[SexKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[ApplicantKey]"
+                      dataType="i4"
+                      name="ApplicantKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[DateOfBirth]"
+                      dataType="dbDate"
+                      name="DateOfBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="50"
+                      name="Gender" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim ETL\DestinationDimApplicants.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\DestinationDimApplicants.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim ETL\DestinationDimApplicants.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\DestinationDimApplicants.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim ETL\DestinationDimCardTypes"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DestinationDimCardTypes"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimCardTypes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim ETL\DestinationDimCardTypes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[msi.dwh]"
+                  connectionManagerRefId="Package.ConnectionManagers[msi.dwh]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input].Columns[CardTypeKey]"
+                      cachedDataType="i4"
+                      cachedName="CardTypeKey"
+                      externalMetadataColumnId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input].ExternalColumns[CardTypeKey]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[CardTypeKey]" />
+                    <inputColumn
+                      refId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input].ExternalColumns[CardTypeName]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input].ExternalColumns[CardTypeKey]"
+                      dataType="i4"
+                      name="CardTypeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input].ExternalColumns[CardTypeName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CardTypeName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim ETL\DestinationDimCardTypes.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\DestinationDimCardTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\DestinationDimCardTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim ETL\DestinationDimCardTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\DestinationDimCardTypes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim ETL\SourceDimApplicants"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SourceDimApplicants"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Applicants]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim ETL\SourceDimApplicants.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[msi.CentralServer2]"
+                  connectionManagerRefId="Package.ConnectionManagers[msi.CentralServer2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ModelBaseKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ModelBaseKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ModelBaseKey]"
+                      name="ModelBaseKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ApplicantKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ApplicantKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ApplicantKey]"
+                      name="ApplicantKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FamilyName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FamilyName]"
+                      length="80"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FamilyName]"
+                      name="FamilyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="80"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[MiddleName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                      length="80"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[SexKey]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[SexKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[SexKey]"
+                      name="SexKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[SuffixKey]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[SuffixKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[SuffixKey]"
+                      name="SuffixKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[EyeColorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[EyeColorKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[EyeColorKey]"
+                      name="EyeColorKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[HairColorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[HairColorKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[HairColorKey]"
+                      name="HairColorKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="250"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="20"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                      length="4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[SSN]"
+                      name="SSN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[VIP]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[VIP]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[VIP]"
+                      name="VIP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ApplicantPortraitKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ApplicantPortraitKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ApplicantPortraitKey]"
+                      name="ApplicantPortraitKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ApplicantSignatureKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ApplicantSignatureKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[ApplicantSignatureKey]"
+                      name="ApplicantSignatureKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Fraud]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Fraud]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Fraud]"
+                      name="Fraud"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FraudUserKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FraudUserKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FraudUserKey]"
+                      name="FraudUserKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FraudDateUtc]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FraudDateUtc]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FraudDateUtc]"
+                      name="FraudDateUtc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Watch]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Watch]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[Watch]"
+                      name="Watch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[WatchUserkey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[WatchUserkey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[WatchUserkey]"
+                      name="WatchUserkey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[WatchDateUtc]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[WatchDateUtc]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[WatchDateUtc]"
+                      name="WatchDateUtc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FamilyNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FamilyNameSoundKey]"
+                      length="30"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FamilyNameSoundKey]"
+                      name="FamilyNameSoundKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FirstNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FirstNameSoundKey]"
+                      length="30"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FirstNameSoundKey]"
+                      name="FirstNameSoundKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[MiddleNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[MiddleNameSoundKey]"
+                      length="30"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[MiddleNameSoundKey]"
+                      name="MiddleNameSoundKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FullNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FullNameSoundKey]"
+                      length="100"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[FullNameSoundKey]"
+                      name="FullNameSoundKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[MatchNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[MatchNameSoundKey]"
+                      length="100"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[MatchNameSoundKey]"
+                      name="MatchNameSoundKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[RaceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[RaceKey]"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[RaceKey]"
+                      name="RaceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[CustomerIdentifier]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[CustomerIdentifier]"
+                      length="25"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].Columns[CustomerIdentifier]"
+                      name="CustomerIdentifier"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ModelBaseKey]"
+                      dataType="i8"
+                      name="ModelBaseKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ApplicantKey]"
+                      dataType="i8"
+                      name="ApplicantKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp2"
+                      name="BirthDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FamilyName]"
+                      dataType="wstr"
+                      length="80"
+                      name="FamilyName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="80"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="80"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[SexKey]"
+                      dataType="ui1"
+                      name="SexKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[SuffixKey]"
+                      dataType="ui1"
+                      name="SuffixKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[EyeColorKey]"
+                      dataType="i4"
+                      name="EyeColorKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[HairColorKey]"
+                      dataType="i4"
+                      name="HairColorKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[VIP]"
+                      dataType="bool"
+                      name="VIP" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ApplicantPortraitKey]"
+                      dataType="i8"
+                      name="ApplicantPortraitKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[ApplicantSignatureKey]"
+                      dataType="i8"
+                      name="ApplicantSignatureKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Fraud]"
+                      dataType="bool"
+                      name="Fraud" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FraudUserKey]"
+                      dataType="i4"
+                      name="FraudUserKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FraudDateUtc]"
+                      dataType="dbTimeStamp"
+                      name="FraudDateUtc" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[Watch]"
+                      dataType="bool"
+                      name="Watch" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[WatchUserkey]"
+                      dataType="i4"
+                      name="WatchUserkey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[WatchDateUtc]"
+                      dataType="dbTimeStamp"
+                      name="WatchDateUtc" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FamilyNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="FamilyNameSoundKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FirstNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="FirstNameSoundKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[MiddleNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="MiddleNameSoundKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[FullNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="FullNameSoundKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[MatchNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="MatchNameSoundKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[RaceKey]"
+                      dataType="i4"
+                      name="RaceKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output].ExternalColumns[CustomerIdentifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="CustomerIdentifier" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ApplicantKey]"
+                      dataType="i8"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ApplicantKey]"
+                      name="ApplicantKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ModelBaseKey]"
+                      dataType="i8"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ModelBaseKey]"
+                      name="ModelBaseKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FamilyName]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FamilyName]"
+                      name="FamilyName" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[MiddleName]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[MiddleName]"
+                      name="MiddleName" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[SexKey]"
+                      dataType="ui1"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[SexKey]"
+                      name="SexKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[SuffixKey]"
+                      dataType="ui1"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[SuffixKey]"
+                      name="SuffixKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[EyeColorKey]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[EyeColorKey]"
+                      name="EyeColorKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[HairColorKey]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[HairColorKey]"
+                      name="HairColorKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                      name="SSN" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[VIP]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[VIP]"
+                      name="VIP" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ApplicantPortraitKey]"
+                      dataType="i8"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ApplicantPortraitKey]"
+                      name="ApplicantPortraitKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ApplicantSignatureKey]"
+                      dataType="i8"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ApplicantSignatureKey]"
+                      name="ApplicantSignatureKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Fraud]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Fraud]"
+                      name="Fraud" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FraudUserKey]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FraudUserKey]"
+                      name="FraudUserKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FraudDateUtc]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FraudDateUtc]"
+                      name="FraudDateUtc" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Watch]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[Watch]"
+                      name="Watch" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[WatchUserkey]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[WatchUserkey]"
+                      name="WatchUserkey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[WatchDateUtc]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[WatchDateUtc]"
+                      name="WatchDateUtc" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FamilyNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FamilyNameSoundKey]"
+                      name="FamilyNameSoundKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FirstNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FirstNameSoundKey]"
+                      name="FirstNameSoundKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[MiddleNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[MiddleNameSoundKey]"
+                      name="MiddleNameSoundKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FullNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[FullNameSoundKey]"
+                      name="FullNameSoundKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[MatchNameSoundKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[MatchNameSoundKey]"
+                      name="MatchNameSoundKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[RaceKey]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[RaceKey]"
+                      name="RaceKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[CustomerIdentifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[CustomerIdentifier]"
+                      name="CustomerIdentifier" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim ETL\SourceDimCardTypes"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SourceDimCardTypes"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[config].[CardTypes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim ETL\SourceDimCardTypes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[msi.CentralServer2]"
+                  connectionManagerRefId="Package.ConnectionManagers[msi.CentralServer2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="50"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[CardTypeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[CardTypeKey]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[CardTypeKey]"
+                      name="CardTypeKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[ModelBaseKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[ModelBaseKey]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[ModelBaseKey]"
+                      name="ModelBaseKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[JurisdictionProviderKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[JurisdictionProviderKey]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[JurisdictionProviderKey]"
+                      name="JurisdictionProviderKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[PmCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[PmCode]"
+                      length="20"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[PmCode]"
+                      name="PmCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[FrsEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[FrsEnabled]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[FrsEnabled]"
+                      name="FrsEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DeduplicationEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DeduplicationEnabled]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DeduplicationEnabled]"
+                      name="DeduplicationEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[SecondLevelReviewEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[SecondLevelReviewEnabled]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[SecondLevelReviewEnabled]"
+                      name="SecondLevelReviewEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[IcwCreateEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[IcwCreateEnabled]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[IcwCreateEnabled]"
+                      name="IcwCreateEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DefaultValidityPeriod]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DefaultValidityPeriod]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DefaultValidityPeriod]"
+                      name="DefaultValidityPeriod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[AllowValidaityPeriodModify]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[AllowValidaityPeriodModify]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[AllowValidaityPeriodModify]"
+                      name="AllowValidaityPeriodModify"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[Price]"
+                      name="Price"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DefaultDefermentDays]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DefaultDefermentDays]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DefaultDefermentDays]"
+                      name="DefaultDefermentDays"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DefaultCustomerIdentifier]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DefaultCustomerIdentifier]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[DefaultCustomerIdentifier]"
+                      name="DefaultCustomerIdentifier"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[AllowDDL]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[AllowDDL]"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].Columns[AllowDDL]"
+                      name="AllowDDL"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[CardTypeKey]"
+                      dataType="i4"
+                      name="CardTypeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[ModelBaseKey]"
+                      dataType="i8"
+                      name="ModelBaseKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[JurisdictionProviderKey]"
+                      dataType="i4"
+                      name="JurisdictionProviderKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[PmCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PmCode" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[FrsEnabled]"
+                      dataType="bool"
+                      name="FrsEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DeduplicationEnabled]"
+                      dataType="bool"
+                      name="DeduplicationEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[SecondLevelReviewEnabled]"
+                      dataType="bool"
+                      name="SecondLevelReviewEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[IcwCreateEnabled]"
+                      dataType="bool"
+                      name="IcwCreateEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DefaultValidityPeriod]"
+                      dataType="i4"
+                      name="DefaultValidityPeriod" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[AllowValidaityPeriodModify]"
+                      dataType="bool"
+                      name="AllowValidaityPeriodModify" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DefaultDefermentDays]"
+                      dataType="i4"
+                      name="DefaultDefermentDays" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[DefaultCustomerIdentifier]"
+                      dataType="bool"
+                      name="DefaultCustomerIdentifier" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output].ExternalColumns[AllowDDL]"
+                      dataType="bool"
+                      name="AllowDDL" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[CardTypeKey]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[CardTypeKey]"
+                      name="CardTypeKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[ModelBaseKey]"
+                      dataType="i8"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[ModelBaseKey]"
+                      name="ModelBaseKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[JurisdictionProviderKey]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[JurisdictionProviderKey]"
+                      name="JurisdictionProviderKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[PmCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[PmCode]"
+                      name="PmCode" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[FrsEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[FrsEnabled]"
+                      name="FrsEnabled" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DeduplicationEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DeduplicationEnabled]"
+                      name="DeduplicationEnabled" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[SecondLevelReviewEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[SecondLevelReviewEnabled]"
+                      name="SecondLevelReviewEnabled" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[IcwCreateEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[IcwCreateEnabled]"
+                      name="IcwCreateEnabled" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DefaultValidityPeriod]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DefaultValidityPeriod]"
+                      name="DefaultValidityPeriod" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[AllowValidaityPeriodModify]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[AllowValidaityPeriodModify]"
+                      name="AllowValidaityPeriodModify" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      dataType="numeric"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      name="Price"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DefaultDefermentDays]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DefaultDefermentDays]"
+                      name="DefaultDefermentDays" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DefaultCustomerIdentifier]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[DefaultCustomerIdentifier]"
+                      name="DefaultCustomerIdentifier" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[AllowDDL]"
+                      dataType="bool"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[AllowDDL]"
+                      name="AllowDDL" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim ETL\SourceDimSex"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SourceDimSex"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[app].[Sexes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim ETL\SourceDimSex.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[msi.CentralServer2]"
+                  connectionManagerRefId="Package.ConnectionManagers[msi.CentralServer2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[SexKey]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].ExternalColumns[SexKey]"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[SexKey]"
+                      name="SexKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[Value]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                      length="10"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[Value]"
+                      name="Value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="1"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].ExternalColumns[SexKey]"
+                      dataType="ui1"
+                      name="SexKey" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Value" />
+                    <externalMetadataColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Code" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[SexKey]"
+                      dataType="ui1"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[SexKey]"
+                      name="SexKey" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[Value]"
+                      name="Value" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Dim ETL.Paths[OLE DB Source Output]"
+              endId="Package\Dim ETL\DestinarionDimSex.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Dim ETL\SourceDimSex.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Dim ETL.Paths[OLE DB Source Output1]"
+              endId="Package\Dim ETL\DestinationDimCardTypes.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Dim ETL\SourceDimCardTypes.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Dim ETL.Paths[OLE DB Source Output2]"
+              endId="Package\Dim ETL\DestinationDimApplicants.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Dim ETL\SourceDimApplicants.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Dim ETL"
+          TopLeft="81.5,86.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Dim ETL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Dim ETL\SourceDimSex"
+          TopLeft="61,62" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Dim ETL\DestinarionDimSex"
+          TopLeft="50,221" />
+        <EdgeLayout
+          Id="Package\Dim ETL.Paths[OLE DB Source Output]"
+          TopLeft="136.75,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,117"
+              Start="0,0"
+              End="0,109.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Dim ETL\SourceDimCardTypes"
+          TopLeft="267,62" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Dim ETL\DestinationDimCardTypes"
+          TopLeft="271,217" />
+        <EdgeLayout
+          Id="Package\Dim ETL.Paths[OLE DB Source Output1]"
+          TopLeft="360.5,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,113"
+              Start="0,0"
+              End="14.5,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.5"
+                    Point2="0,56.5"
+                    Point3="4,56.5" />
+                  <mssgle:LineSegment
+                    End="10.5,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,56.5"
+                    Point2="14.5,56.5"
+                    Point3="14.5,60.5" />
+                  <mssgle:LineSegment
+                    End="14.5,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Dim ETL\SourceDimApplicants"
+          TopLeft="543,54" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Dim ETL\DestinationDimApplicants"
+          TopLeft="547,209" />
+        <EdgeLayout
+          Id="Package\Dim ETL.Paths[OLE DB Source Output2]"
+          TopLeft="635,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,113"
+              Start="0,0"
+              End="14.5,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.5"
+                    Point2="0,56.5"
+                    Point3="4,56.5" />
+                  <mssgle:LineSegment
+                    End="10.5,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,56.5"
+                    Point2="14.5,56.5"
+                    Point3="14.5,60.5" />
+                  <mssgle:LineSegment
+                    End="14.5,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim ETL\SourceDimSex">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim ETL\DestinarionDimSex">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim ETL\SourceDimCardTypes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim ETL\DestinationDimCardTypes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim ETL\SourceDimApplicants">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim ETL\DestinationDimApplicants">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
