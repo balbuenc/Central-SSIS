@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="72"
-  DTS:VersionGUID="{F8775999-7754-48F6-8071-47262F2D931A}">
+  DTS:VersionBuild="73"
+  DTS:VersionGUID="{78230488-C894-4805-8D09-30B2455A343D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -47,6 +47,7 @@
       DTS:refId="Package\Applicants ETL"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{2F4BD6DC-6679-4665-8767-FCD54A1A6416}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -1188,6 +1189,7 @@ FROM            Applicants</property>
       DTS:refId="Package\Clean  Applicants Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{c4cd734c-0fe3-4193-8b8f-0f4902c250be}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -7256,7 +7258,7 @@ FROM            Applicants</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT top(10000) RequestCardKey, ModelBaseKey, RequestKey, CardTypeKey, CardStatusKey, CustomerIdentifier, Price, IssueDate, ExpiryDate, AvailableIssuanceDateUtc, DeliveredIssuanceDateUtc, RealId, 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  RequestCardKey, ModelBaseKey, RequestKey, CardTypeKey, CardStatusKey, CustomerIdentifier, Price, IssueDate, ExpiryDate, AvailableIssuanceDateUtc, DeliveredIssuanceDateUtc, RealId, 
                          DocumentDiscriminator, Expedite, ApplicantPortraitKey, ApplicantSignatureKey, RequestCardStatusKey, DDLAccountId, GivenNamesLine1, GivenNamesLine2, GivenNamesLine3, MailDate, ExpiryYears
 FROM            RequestsCards WITH (nolock)</property>
                 <property
@@ -8188,7 +8190,7 @@ FROM            RequestsCards WITH (nolock)</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT   top (10000)   RequestKey, ModelBaseKey, ApplicantKey, CardAddressKey, MailingAddressKey, ReturnAddressKey, Veteran, OrganDonor, Weight, Height, ProviderState, ProviderStateId, MedicalText, AllergyText, 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT    RequestKey, ModelBaseKey, ApplicantKey, CardAddressKey, MailingAddressKey, ReturnAddressKey, Veteran, OrganDonor, Weight, Height, ProviderState, ProviderStateId, MedicalText, AllergyText, 
                          RequestSourceKey, EyeColorKey, HairColorKey, ApplicantPortraitKey, ApplicantSignatureKey, JurisdictionProviderKey, Cancelled, Hold, HoldUserKey, HoldDateUtc, Fraud, FraudUserKey, FraudDateUtc, 
                          Handicap, LimitedTerm, OfficeKey, VoterRegistered, PortraitSourceKey, SignatureSourceKey, PreviousProviderState, PreviousProviderStateId, Renewal, ForeignOfficeKey
 FROM            Requests WITH (nolock)</property>
