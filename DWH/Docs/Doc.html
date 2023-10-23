@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Documentación del Data Warehouse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 20px;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 16px;
+        }
+
+        p {
+            color: #444;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Documentación del Data Warehouse</h1>
+
+    <p>Esta documentación proporciona una visión general de la estructura y los objetos clave del Data Warehouse (DWH). El DWH se ha diseñado para permitir el análisis de datos de solicitudes de tarjetas. A continuación, encontrarás detalles sobre las tablas, sus funciones y consideraciones técnicas.</p>
+
+    <h2>Tablas de Dimensiones</h2>
+
+    <h3>DimApplicants</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>ApplicantKey</td>
+            <td>Clave única del solicitante.</td>
+        </tr>
+        <tr>
+            <td>FirstName</td>
+            <td>Nombre del solicitante.</td>
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td>Apellido del solicitante.</td>
+        </tr>
+        <tr>
+            <td>DateOfBirth</td>
+            <td>Fecha de nacimiento del solicitante.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las otras tablas de dimensiones -->
+
+    <h3>DimCardTypes</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>CardTypeKey</td>
+            <td>Clave única del tipo de tarjeta.</td>
+        </tr>
+        <tr>
+            <td>CardTypeCode</td>
+            <td>Código del tipo de tarjeta.</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>Precio del tipo de tarjeta.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de dimensiones -->
+
+    <h3>DimOffices</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>OfficeKey</td>
+            <td>Clave única de la oficina.</td>
+        </tr>
+        <tr>
+            <td>OfficeName</td>
+            <td>Nombre de la oficina.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de dimensiones -->
+
+    <h3>DimRequestSources</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>RequestSourceKey</td>
+            <td>Clave única de la fuente de solicitud.</td>
+        </tr>
+        <tr>
+            <td>RequestSourceCode</td>
+            <td>Código de la fuente de solicitud.</td>
+        </tr>
+        <tr>
+            <td>RequestSourceDescription</td>
+            <td>Descripción de la fuente de solicitud.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de dimensiones -->
+
+    <h3>DimReviewGates</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>ReviewGateKey</td>
+            <td>Clave única de la puerta de revisión.</td>
+        </tr>
+        <tr>
+            <td>ReviewGateName</td>
+            <td>Nombre de la puerta de revisión.</td>
+        </tr>
+        <tr>
+            <td>ReviewGateDescription</td>
+            <td>Descripción de la puerta de revisión.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de dimensiones -->
+
+    <h3>DimSexes</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>SexKey</td>
+            <td>Clave única del género.</td>
+        </tr>
+        <tr>
+            <td>SexCode</td>
+            <td>Código del género.</td>
+        </tr>
+        <tr>
+            <td>SexDescription</td>
+            <td>Descripción del género.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de dimensiones -->
+
+    <h3>DimSources</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>SourceKey</td>
+            <td>Clave única de la fuente de datos.</td>
+        </tr>
+        <tr>
+            <td>SourceCode</td>
+            <td>Código de la fuente de datos.</td>
+        </tr>
+        <tr>
+            <td>SourceDescription</td>
+            <td>Descripción de la fuente de datos.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de dimensiones -->
+
+    <h3>DimUsers</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>UserKey</td>
+            <td>Clave única del usuario.</td>
+        </tr>
+        <tr>
+            <td>UserName</td>
+            <td>Nombre del usuario.</td>
+        </tr>
+        <tr>
+            <td>OfficeKey</td>
+            <td>Clave única de la oficina del usuario.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de dimensiones -->
+
+    <h2>Tablas de Hechos</h2>
+
+    <h3>FactRequestCards</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>RequestCardKey</td>
+            <td>Clave única de la tarjeta emitida.</td>
+        </tr>
+        <tr>
+            <td>RequestKey</td>
+            <td>Clave única de la solicitud relacionada.</td>
+        </tr>
+        <tr>
+            <td>CardStatus</td>
+            <td>Estado de la tarjeta.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de hechos -->
+
+    <h3>FactRequests</h3>
+    <table>
+        <tr>
+            <th>Columna</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>RequestKey</td>
+            <td>Clave única de la solicitud de tarjeta.</td>
+        </tr>
+        <tr>
+            <td>RequestDate</td>
+            <td>Fecha de la solicitud de tarjeta.</td>
+        </tr>
+        <tr>
+            <td>OfficeKey</td>
+            <td>Clave única de la oficina de origen.</td>
+        </tr>
+        <!-- Agregar más filas si es necesario -->
+    </table>
+
+    <!-- Repite el mismo formato para las demás tablas de hechos -->
+
+    <h2>Consideraciones Técnicas Adicionales</h2>
+    <p>El DWH se ha diseñado teniendo en cuenta algunas características avanzadas para optimizar el procesamiento y la administración:</p>
+    <ul>
+        <li><strong>Compresión de Tabla a Nivel de Página:</strong> La compresión de página se utiliza para reducir el espacio de almacenamiento y mejorar el rendimiento de las consultas.</li>
+        <li><strong>Múltiples Esquemas:</strong> El uso de múltiples esquemas permite una organización eficiente de los objetos de la base de datos y una mejor administración.</li>
+        <li><strong>Grupos de Archivos:</strong> Se han utilizado grupos de archivos para facilitar el procesamiento y la administración de la base de datos, asegurando un rendimiento óptimo.</li>
+    </ul>
+
+    <p>Estos elementos técnicos avanzados se combinan para garantizar un procesamiento rápido y una administración sin problemas de la base de datos del Data Warehouse.</p>
+
+    <p>Este documento proporciona una visión general de los objetos y las características clave del DWH. Para obtener información más detallada sobre consultas y operaciones específicas, se recomienda consultar la documentación técnica y los manuales relevantes.</p>
+</body>
+
+</html>
