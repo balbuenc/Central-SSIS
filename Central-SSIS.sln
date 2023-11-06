@@ -5,13 +5,34 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Central-SSIS", "Central-SSIS.dtproj", "{0C151566-49E0-4434-9B8C-2763E7860735}"
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report Project1", "..\Report Project1\Report Project1.rptproj", "{659B3654-133D-4801-A818-5F44B8F4FDE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
 		Development|Default = Development|Default
+		Release|Default = Release|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C151566-49E0-4434-9B8C-2763E7860735}.Debug|Default.ActiveCfg = Development
+		{0C151566-49E0-4434-9B8C-2763E7860735}.Debug|Default.Build.0 = Development
+		{0C151566-49E0-4434-9B8C-2763E7860735}.DebugLocal|Default.ActiveCfg = Development
+		{0C151566-49E0-4434-9B8C-2763E7860735}.DebugLocal|Default.Build.0 = Development
 		{0C151566-49E0-4434-9B8C-2763E7860735}.Development|Default.ActiveCfg = Development
 		{0C151566-49E0-4434-9B8C-2763E7860735}.Development|Default.Build.0 = Development
+		{0C151566-49E0-4434-9B8C-2763E7860735}.Release|Default.ActiveCfg = Development
+		{0C151566-49E0-4434-9B8C-2763E7860735}.Release|Default.Build.0 = Development
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Debug|Default.ActiveCfg = Debug
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Debug|Default.Build.0 = Debug
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Debug|Default.Deploy.0 = Debug
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.DebugLocal|Default.Build.0 = DebugLocal
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Development|Default.ActiveCfg = DebugLocal
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Development|Default.Build.0 = DebugLocal
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Release|Default.ActiveCfg = Release
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Release|Default.Build.0 = Release
+		{659B3654-133D-4801-A818-5F44B8F4FDE4}.Release|Default.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
